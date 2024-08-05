@@ -30,6 +30,29 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        .slideText {
+display: block;
+width: auto;
+height: 100px;
+background: gold;
+color: #fff;
+overflow: hidden;
+}
+.slidingtext {
+padding: 5px;
+  animation-name: example;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  transition: all 300ms ease;
+}
+
+@keyframes example {
+  from {transform: matrix(1, 0, 0, 1, 500, 5)}
+  to {transform: matrix(1, 0, 0, 1, -344, 5)}
+}
+
+    </style>
 </head>
 
 <body>
@@ -77,6 +100,15 @@
     </div>
     <!-- Topbar End -->
 
+    <!-- Breaking News Start -->
+     <div class="container-fluid slideText">
+        <div class="slidingtext">
+            <h3>Jamnagar Biggest Navratri Celebration 2024 Thanganat Welcome Navratri</h3>
+           <h4>Powered by Shree Hansh Technologies.</h4>
+        </div>
+     </div>
+
+     <!-- Breaking News Start -->
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
