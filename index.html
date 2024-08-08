@@ -31,25 +31,24 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <style>
-        .slideText {
-display: block;
-width: auto;
-height: 100px;
-background: gold;
-color: #fff;
-overflow: hidden;
+.news{
+    width: 160px;
 }
-.slidingtext {
-padding: 5px;
-  animation-name: example;
-  animation-duration: 15s;
-  animation-iteration-count: infinite;
-  transition: all 300ms ease;
-}
+.news-scroll a{
+    text-decoration: darkblue;
+    font-size: xx-large;
+    font-style: oblique;
 
-@keyframes example {
-  from {transform: matrix(1, 0, 0, 1, 500, 5)}
-  to {transform: matrix(1, 0, 0, 1, -344, 5)}
+} 
+.dot{
+    height: 6px;
+    width: 6px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 2px !important;
+    background-color: rgb(207,23,23);
+    border-radius: 50%;
+    display: inline-block;
 }
 
     </style>
@@ -101,13 +100,52 @@ padding: 5px;
     <!-- Topbar End -->
 
     <!-- Breaking News Start -->
-     <div class="container-fluid slideText">
-        <div class="slidingtext">
-            <h3>Jamnagar Biggest Navratri Celebration 2024 Thanganat Welcome Navratri</h3>
-           <h4>Powered by Shree Hansh Technologies.</h4>
+     <div class="container-fluid" style="height: 80px; background: gold;">
+<div class="row" style="display: block; padding-top: 19px;">
+<div class="col-md-12">
+    <div class="d-flex justify-content-between align-items-center breaking-news ">
+        <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center py-2 text-white px-1 news btn btn-primary">
+            <span class="d-flex align-items-center">&nbsp; Register</span>
         </div>
+        <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+            <a href="#">Jamnagar Biggest Navratri Celebration 2024 Thanganat Welcome Navratri Powered by Shree Hansh Technologies.</a>
+        </marquee>
+    </div>
+</div>
+</div>
      </div>
 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Registration</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control name" placeholder="User Name">
+                    <label>Email</label>
+                    <input type="text" class="form-control email" placeholder="Email">
+                    <label>Mobile Number</label>
+                    <input type="text" class="form-control mobile" placeholder="Mobile">
+                    <label>Address</label>
+                    <textarea class="form-control address" placeholder="address"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary submit" di>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+     
      <!-- Breaking News Start -->
 
     <!-- Navbar Start -->
@@ -830,6 +868,38 @@ padding: 5px;
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        $(".news").click(function(){
+            //$('#exampleModal').modal('show');
+         });
+
+         $(".submit").click(function(){
+            var name= $('.name').val()
+            var email = $('.email').val();
+            var mobile = $('.mobile').val();
+            var address = $('.address').val();
+            
+            var message = {
+                name: name,
+                email: email,
+                mobile: mobile,
+                address:address
+            };
+
+var msg = JSON.stringify(message);
+
+            Email.send({
+        Host : "smtp.yourisp.com",
+        Username : "shreehanshtech@gmail.com",
+        Password : "Shreehansh@1501",
+        To : email,
+        From : "shreehanshtech@gmail.com",
+        Subject : encodeURIComponent("Regester for thanganat welcome navratri pass"),
+        Body : msg
+    }).then(  message => alert(message)).catch( err => {alert(err)});
+         });
+    </script>
 </body>
 
 </html>
